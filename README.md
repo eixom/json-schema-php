@@ -85,13 +85,13 @@ dll：
 ## 扩展版安装 
 
 ```
-[    /]# cd /php-src/ext/jsonschema
-[zoeey]# /path/of/php/bin/phpize
-[zoeey]# ./configure --with-php-config=/path/of/php/bin/php-config
-[zoeey]# make
-[zoeey]# make install
-[zoeey]# cp modules/jsonschema.so /path/of/php/lib/php_jsonschema.so (just in case:) (extension_dir=lib/)
-[zoeey]# make clean
+[         /]# cd /php-src/ext/jsonschema
+[jsonschema]# /path/of/php/bin/phpize
+[jsonschema]# ./configure --with-php-config=/path/of/php/bin/php-config
+[jsonschema]# make
+[jsonschema]# make install
+[jsonschema]# cp modules/jsonschema.so /path/of/php/lib/php_jsonschema.so (just in case:) (extension_dir=lib/)
+[jsonschema]# make clean
 ```
 
 ## 生成 JSON Schema
