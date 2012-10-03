@@ -40,20 +40,20 @@ dll：
     <tr>
         <td>chm</td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/doc/build/json-schema-php.chm" rel="nofollow">chm</a>
+            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php.chm" rel="nofollow">chm</a>
         </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/doc/build/json-schema-php.chm.checksum" rel="nofollow">checksum</a>
+            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php.chm.checksum" rel="nofollow">checksum</a>
         </td>
         <td>无法查看：文件属性，解除锁定 </td>
     </tr>
     <tr>
         <td> html </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/doc/build/json-schema-php-html.zip" rel="nofollow">zip</a>
+            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php-html.zip" rel="nofollow">zip</a>
         </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/doc/build/json-schema-php-html.zip.checksum" rel="nofollow">checksum</a>
+            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php-html.zip.checksum" rel="nofollow">checksum</a>
         </td>
         <td>
         </td>
@@ -61,10 +61,10 @@ dll：
     <tr>
         <td> single  </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/doc/build/json-schema-php-single.zip" rel="nofollow"> zip</a>
+            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php-single.zip" rel="nofollow"> zip</a>
         </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/doc/build/json-schema-php-single.zip.checksum" rel="nofollow">checksum</a>
+            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php-single.zip.checksum" rel="nofollow">checksum</a>
         </td>
         <td>
         </td>
@@ -72,10 +72,10 @@ dll：
     <tr>
         <td>pdf  </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/doc/build/json-schema-php.pdf" rel="nofollow"> pdf</a>
+            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php.pdf" rel="nofollow"> pdf</a>
         </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/doc/build/json-schema-php.pdf.checksum" rel="nofollow">checksum</a>
+            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php.pdf.checksum" rel="nofollow">checksum</a>
         </td>
         <td>
         </td>
