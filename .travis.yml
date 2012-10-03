@@ -15,7 +15,7 @@ env:
 
 # compile
 before_script:
-    - cd src
+    - cd ext
     - phpize
     - ./configure
     - make
