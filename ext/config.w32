@@ -1,0 +1,9 @@
+// $Id$
+// vim:ft=javascript
+
+ARG_ENABLE("jsonschema", "enable jsonschema support", "no");
+
+if (PHP_JSONSCHEMA != "no") {
+	EXTENSION("jsonschema", "jsonschema.c");
+}
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glossary version="5.0" xml:id="glossary"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:m="http://www.w3.org/1998/Math/MathML"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <glossdiv>
+    <title>术语表</title>
+
+    <glossentry>
+      <glossterm>JSON</glossterm>
+
+      <glossdef>
+        <para>JSON（Javascript Object
+        Notation）是一种轻量级的数据交换语言，以文字为基础，且易于让人阅读。尽管JSON是在Javascript的一个子集，但JSON是独立于语言的文本格式，并且采用了类似于C语言家族的一些习惯。</para>
+
+        <para>来源：<link
+        xlink:href="http://zh.wikipedia.org/wiki/JSON">http://zh.wikipedia.org/wiki/JSON</link></para>
+      </glossdef>
+    </glossentry>
+
+    <glossentry>
+      <glossterm>JSON Schema</glossterm>
+
+      <glossdef>
+        <para>JSON (JavaScript Object Notation) Schema defines the media type
+        "application/schema+json", a JSON based format for defining the
+        structure of JSON data. JSON Schema provides a contract for what JSON
+        data is required for a given application and how to interact with it.
+        JSON Schema is intended to define validation, documentation, hyperlink
+        navigation, and interaction control of JSON data.</para>
+
+        <para>来源：<link
+        xlink:href="http://tools.ietf.org/html/draft-zyp-json-schema-03">http://tools.ietf.org/html/draft-zyp-json-schema-03</link></para>
+      </glossdef>
+    </glossentry>
+  </glossdiv>
+</glossary>

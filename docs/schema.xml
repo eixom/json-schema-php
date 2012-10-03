@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="jsonschema.vali"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>JSON 验证</title>
+
+  <section xml:id="jsonschema.type">
+    <title>type 类型</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>string</term>
+
+        <listitem>
+          <para>值必须为字符串。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>number</term>
+
+        <listitem>
+          <para>值必须为数字，包括 整型和浮点型。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>integer</term>
+
+        <listitem>
+          <para>值必须为整型数字。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>boolean</term>
+
+        <listitem>
+          <para>值必须为布尔型。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>object</term>
+
+        <listitem>
+          <para>值必须为对象。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>array</term>
+
+        <listitem>
+          <para>值必须为数组。关联数组应使用 object 进行描述。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>null</term>
+
+        <listitem>
+          <para>值必须为 null。标准中规定，null仅存在于多类型集合时可为null。本实现 null
+          可用于描述任意位置。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>any</term>
+
+        <listitem>
+          <para>任意类型，包括 null。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>$ref</term>
+
+        <listitem>
+          <para>自定义复合类型。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="jsonschema.string">
+    <title>string 类型</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>minLength</term>
+
+        <listitem>
+          <para>字符串最小长度。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>maxLength</term>
+
+        <listitem>
+          <para>字符串最小长度。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>format</term>
+
+        <listitem>
+          <task>
+            <title>特殊格式信息</title>
+
+            <procedure>
+              <step>
+                <para>date-time ： ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ UTC
+                时间。</para>
+              </step>
+
+              <step>
+                <para>date ： YYYY-MM-DD 日期。</para>
+              </step>
+
+              <step>
+                <para>time ： hh:mm:ss 时间。</para>
+              </step>
+
+              <step>
+                <para>utc-millisec ： UNIX 时间戳，可为整型和浮点型。</para>
+              </step>
+
+              <step>
+                <para>regex ： 正则匹配，符合 ECMA 262/Perl 5，需要与 pattern 属性配合。</para>
+              </step>
+
+              <step>
+                <para>color ： 颜色。符合 CSS 2.1 规范 [<link
+                xlink:href="www.w3.org/TR/2007/CR-CSS21-20070719/">W3C.CR-CSS21-20070719</link>][<link
+                xlink:href="www.w3.org/TR/2007/CR-CSS21-20070719/syndata.html#value-def-color">Color</link>]。格式示例：#rrggbb、#rgb、rgb(255,255,255).rgb(100%,100%,100%)。</para>
+              </step>
+
+              <step>
+                <para>style ： CSS 样式格式（尚未实现）。</para>
+              </step>
+
+              <step>
+                <para>phone ： 电话号码，现基于 <link
+                xlink:href="http://en.wikipedia.org/wiki/E.123">E.123</link>。</para>
+              </step>
+
+              <step>
+                <para>uri ： URI。现仅验证为 <link
+                xlink:href="http://www.faqs.org/rfcs/rfc2396">URL
+                rfc2396</link>。</para>
+              </step>
+
+              <step>
+                <para>email ：邮箱地址。</para>
+              </step>
+
+              <step>
+                <para>ip-address ： IPv4地址。</para>
+              </step>
+
+              <step>
+                <para>ipv6 ： IPv6地址。</para>
+              </step>
+
+              <step>
+                <para>host / host-name ： [<link
+                xlink:href="http://tools.ietf.org/html/rfc810">Host
+                rfc810</link>]</para>
+              </step>
+            </procedure>
+          </task>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>pattern</term>
+
+        <listitem>
+          <para>正则表达式。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <example>
+      <title>正则验证</title>
+
+      <programlisting>array (
+    'type' =&gt; 'string',
+    'format' =&gt; 'regex',
+    'pattern' =&gt; '/^[a-z0-9]+$/i',
+    'minLength' =&gt; 0,
+    'maxLength' =&gt; 2147483647,
+)</programlisting>
+    </example>
+
+    <example>
+      <title>邮箱地址验证</title>
+
+      <programlisting>array (
+    'type' =&gt; 'string',
+    'format' =&gt; 'email',
+)</programlisting>
+    </example>
+  </section>
+
+  <section xml:id="jsonschema.number">
+    <title xml:id="schema-number">number 类型</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>minimum</term>
+
+        <listitem>
+          <para>最小值。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>maximum</term>
+
+        <listitem>
+          <para>最大值。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>exclusiveMinimum</term>
+
+        <listitem>
+          <para>最小值，包含临界值。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>exclusiveMaximum</term>
+
+        <listitem>
+          <para>最大值，包含临界值。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <example>
+      <title>1～100 之间的数字(不包括1和100)</title>
+
+      <programlisting>array (
+    'type' =&gt; 'number',
+    'minimum' =&gt; 1,
+    'maximum' =&gt; 100,
+)</programlisting>
+    </example>
+
+    <example>
+      <title>1～100 之间的数字（包括1和100）</title>
+
+      <programlisting>array (
+    'type' =&gt; 'number',
+    'exclusiveMinimum' =&gt; 1,
+    'exclusiveMaximum' =&gt; 100,
+)</programlisting>
+    </example>
+  </section>
+
+  <section xml:id="jsonschema.integer">
+    <title>integer 类型</title>
+
+    <para>验证为整型，属性继承 <link linkend="schema-number">number类型</link>。</para>
+  </section>
+
+  <section xml:id="jsonschema.boolean">
+    <title>boolean 类型</title>
+
+    <para>无格式限制属性，验证为布尔型。</para>
+  </section>
+
+  <section xml:id="jsonschema.object">
+    <title>object 类型</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>properties</term>
+
+        <listitem>
+          <para>指定对象所含属性和属性的类型。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>required</term>
+
+        <listitem>
+          <para>用于描述属性是否为必有。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <example>
+      <title>一个Person对象，拥有 name,age,height 三个属性，其中age可选</title>
+
+      <programlisting>array(
+    'name' =&gt;
+    array(
+        'type' =&gt; 'string',
+        'format' =&gt; 'regex',
+        'pattern' =&gt; '/^[a-z0-9 ]+$/i',
+        'minLength' =&gt; 0,
+        'maxLength' =&gt; 5000,
+    ),
+    'age' =&gt;
+    array(
+        'type' =&gt; 'integer',
+        'exclusiveMinimum' =&gt; 1,
+        'exclusiveMaximum' =&gt; 200,
+        'required' =&gt; false,
+    ),
+    'height' =&gt;
+    array(
+        'type' =&gt; 'number',
+        'minimum' =&gt; 110,
+        'maximum' =&gt; 230,
+    )
+)</programlisting>
+    </example>
+  </section>
+
+  <section xml:id="jsonschema.array">
+    <title>array 类型</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>items</term>
+
+        <listitem>
+          <para>指定数组元素的验证描述。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>minItems</term>
+
+        <listitem>
+          <para>数组单元数目最小值。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>maxItems</term>
+
+        <listitem>
+          <para>数组单元数目最大值。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="jsonschema.null">
+    <title>null 类型</title>
+
+    <example>
+      <title>null 的使用示例</title>
+
+      <programlisting>array(
+    'type' =&gt;
+    array(
+        'boolean',
+        'integer',
+        'null'
+    ),
+    'minimum' =&gt; 110,
+    'maximum' =&gt; 230
+)</programlisting>
+    </example>
+  </section>
+
+  <section xml:id="jsonschema.any">
+    <title>any 类型</title>
+
+    <para>无格式限制属性，任意格式可通过验证。</para>
+  </section>
+
+  <section xml:id="jsonschema.ref">
+    <title>$ref 类型</title>
+
+    <para>复合类型可以通过addType方法载入到验证过程内。</para>
+
+    <example>
+      <title>复合类型的使用</title>
+
+      <programlisting>$value = array();
+$value['users'][] = array('account' =&gt; 'userA', 'email' =&gt; 'userA@example.com');
+$value['users'][] = array('account' =&gt; 'userB', 'email' =&gt; 'userB@example.com');
+$value['users'][] = array('account' =&gt; 'userC', 'email' =&gt; 'userC@example.com');
+
+$user_schema = array(
+    'id' =&gt; 'user',
+    'description' =&gt; 'user info',
+    'type' =&gt; 'object',
+    'optional' =&gt; true,
+    'properties' =&gt;
+    array(
+        'account' =&gt;
+        array(
+            'type' =&gt; 'string',
+        ),
+        'email' =&gt;
+        array(
+            'type' =&gt; 'string',
+            'optional' =&gt; true,
+        ),
+    ),
+);
+$schema = array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'users' =&gt;
+        array(
+            'type' =&gt; 'array',
+            'items' =&gt;
+            array(
+                '$ref' =&gt; 'user',
+            )
+        )
+    )
+);
+$jsonSchema = new JsonSchema();
+$jsonSchema-&gt;addType($user_schema);
+echo assert($jsonSchema-&gt;validate($schema, $value)), PHP_EOL;</programlisting>
+    </example>
+  </section>
+</chapter>

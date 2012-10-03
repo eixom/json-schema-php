@@ -1,0 +1,15 @@
+{
+    "id": "user",
+    "description": "user info",
+    "type": "object",
+    "optional": true,
+    "properties": {
+        "account": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string", 
+            "optional": true
+        }
+    }
+}

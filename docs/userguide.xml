@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book version="5.0" xml:lang="zh_CN" xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:m="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>JSON-Schema-PHP 2.0 用户手册</title>
+
+    <author>
+      <personname>moxie(system128@gmail.com)</personname>
+    </author>
+
+    <pubdate>2010-10-10~2012-10-03</pubdate>
+
+    <productname/>
+
+    <legalnotice>
+      <para/>
+    </legalnotice>
+  </info>
+
+  <preface xml:id="task.list">
+    <title>项目介绍</title>
+
+    <para>这是一个JSON 结构验证 PHP 实现。JSON Schema
+    用于描述JSON数据的结构和类型。如同DTD与XML的关系。本实现用于使用 PHP 调用 JSON Schema 对 JSON 数据进行验证。 包括
+    PHP 和 PHP扩展 ，建议PHP版本 PHP 5 &gt;= 5.2.0、PECL json &gt;= 1.2.0。</para>
+
+    <warning>
+      <para>JSON Schema 标准尚未定稿，实际开发生产请酌情施用。</para>
+    </warning>
+
+    <simplesect>
+      <title>下载</title>
+
+      <para><link
+      xlink:href="https://github.com/downloads/zoeey/json-schema-php/json-schema-php_latest.zip">https://github.com/downloads/zoeey/json-schema-php/json-schema-php_latest.zip</link></para>
+    </simplesect>
+
+    <simplesect>
+      <title>版本库</title>
+
+      <programlisting>git clone git://github.com/zoeey/json-schema-php.git</programlisting>
+    </simplesect>
+
+    <simplesect>
+      <title>主页</title>
+
+      <para><link
+      xlink:href="https://github.com/zoeey/json-schema-php">https://github.com/zoeey/json-schema-php</link></para>
+    </simplesect>
+  </preface>
+
+  <xi:include href="quickstart.xml" xpointer="element(/1)"/>
+
+  <xi:include href="generate.xml" xpointer="element(/1)"/>
+
+  <xi:include href="schema.xml" xpointer="element(/1)"/>
+
+  <xi:include href="class.jsonschema.xml" xpointer="element(/1)"/>
+
+  <xi:include href="glossary.xml" xpointer="element(/1)"/>
+</book>

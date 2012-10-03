@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="jsonschema.quickstart" xml:lang="zh-CN"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>快速入门</title>
+
+  <simplesect>
+    <title>简单示例</title>
+
+    <example>
+      <title>简单示例</title>
+
+      <programlisting>
+$value = 'teststring';
+$schema = array (
+  'type' =&gt; 'string',  /* 数据类型为字符串 */
+  'minLength' =&gt; 3,   /* 最小长度 */
+  'maxLength' =&gt; 300, /* 最大长度 */
+);
+
+$jsonSchema = new JsonSchema();
+echo assert($jsonSchema-&gt;validate($schema, $value));
+
+</programlisting>
+    </example>
+  </simplesect>
+
+  <simplesect>
+    <title>生成 JSON Schema</title>
+
+    <para>由JSON生成一个全格式的Schema，方便编辑修改（勿随便直接使用在实践中）。</para>
+
+    <example>
+      <title>生成 JSON Schema</title>
+
+      <programlisting>
+$value = new stdClass();
+$value-&gt;name = 'a name';
+$value-&gt;age = 23;
+$value-&gt;height = 183.5;
+$jsonSchema = new JsonSchema();
+var_dump($jsonSchema-&gt;getSchema($value));
+
+</programlisting>
+    </example>
+
+    <example>
+      <title>结果</title>
+
+      <programlisting>array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'name' =&gt;
+        array(
+            'type' =&gt; 'string',
+            'format' =&gt; 'regex',
+            'pattern' =&gt; '/^[a-z0-9]+$/i',
+            'minLength' =&gt; 0,
+            'maxLength' =&gt; 2147483647,
+        ),
+        'age' =&gt;
+        array(
+            'type' =&gt; 'integer',
+            'default' =&gt; 0,
+            'minimum' =&gt; 0,
+            'maximum' =&gt; 2147483647,
+            'exclusiveMinimum' =&gt; 0,
+            'exclusiveMaximum' =&gt; 2147483647,
+        ),
+        'height' =&gt;
+        array(
+            'type' =&gt; 'number',
+            'default' =&gt; 0,
+            'minimum' =&gt; 0,
+            'maximum' =&gt; 2147483647,
+            'exclusiveMinimum' =&gt; 0,
+            'exclusiveMaximum' =&gt; 2147483647,
+        )
+    )
+)</programlisting>
+    </example>
+  </simplesect>
+
+  <simplesect>
+    <title>使用 JSON Schema 验证 JSON</title>
+
+    <para>验证一个由 User(account,email) 对象组成的数组。</para>
+
+    <example>
+      <title>验证 JSON</title>
+
+      <programlisting>$value = new stdClass();
+$value-&gt;name = 'a name';
+$value-&gt;age = 23;
+$value-&gt;height = 183.5;
+
+$schema = array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'name' =&gt;
+        array(
+            'type' =&gt; 'string',
+            'format' =&gt; 'regex',
+            'pattern' =&gt; '/^[a-z0-9 ]+$/i',
+            'minLength' =&gt; 0,
+            'maxLength' =&gt; 2147483647,
+        ),
+        'age' =&gt;
+        array(
+            'type' =&gt; 'integer',
+            'default' =&gt; 0,
+            'minimum' =&gt; 0,
+            'maximum' =&gt; 2147483647,
+            'exclusiveMinimum' =&gt; 0,
+            'exclusiveMaximum' =&gt; 2147483647,
+        ),
+        'height' =&gt;
+        array(
+            'type' =&gt; 'number',
+            'default' =&gt; 0,
+            'minimum' =&gt; 0,
+            'maximum' =&gt; 2147483647,
+            'exclusiveMinimum' =&gt; 0,
+            'exclusiveMaximum' =&gt; 2147483647,
+        )
+    )
+);
+
+$jsonSchema = new JsonSchema();
+var_dump($jsonSchema-&gt;validate($schema, $value)), PHP_EOL;</programlisting>
+    </example>
+  </simplesect>
+</chapter>

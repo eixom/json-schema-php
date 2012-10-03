@@ -1,0 +1,110 @@
+
+# single html
+
+single.in = "docs/books/json-schema-php/userguide.xml"
+single.xsl = "docs/books/json-schema-php/xsl/single/htmlsingle.xsl"
+single.file = "docs/target/json-schema-php/single/userguide.html"
+single.outdir = "docs/target/json-schema-php/single/"
+single.zip = "docs/target/json-schema-php/single/json-schema-php-single.zip"
+single.header = "docs/books/json-schema-php/xsl/single/header.html"
+# 文件拷贝
+single.copy[image] = "docs/books/json-schema-php/images"
+single.target[image] = "docs/target/json-schema-php/single/images"
+single.copy[css] = "docs/books/json-schema-php/css/single"
+single.target[css] = "docs/target/json-schema-php/single/css"
+
+
+# pdf
+
+pdf.outdir = "docs/target/json-schema-php/pdf/"
+pdf.fop = "docs/books/json-schema-php/xsl/pdf/fop.xml"
+pdf.in = "docs/books/json-schema-php/userguide.xml"
+pdf.xsl = "docs/books/json-schema-php/xsl/pdf/pdf.xsl"
+pdf.pdf = "docs/target/json-schema-php/pdf/json-schema-php.pdf"
+
+pdf.copy[fonts.georgia] = "%SystemRoot%/Fonts/georgia.ttf"
+pdf.target[fonts.georgia] = "docs/zips/cache/fonts/georgia.ttf"
+
+pdf.copy[fonts.georgiab] = "%SystemRoot%/Fonts/georgiab.ttf"
+pdf.target[fonts.georgiab] = "docs/zips/cache/fonts/georgiab.ttf"
+
+pdf.copy[fonts.georgiai] = "%SystemRoot%/Fonts/georgiai.ttf"
+pdf.target[fonts.georgiai] = "docs/zips/cache/fonts/georgiai.ttf"
+
+pdf.copy[fonts.georgiaz] = "%SystemRoot%/Fonts/georgiaz.ttf"
+pdf.target[fonts.georgiaz] = "docs/zips/cache/fonts/georgiaz.ttf"
+
+pdf.copy[fonts.simsun] = "%SystemRoot%/fonts/simsun.ttc"
+pdf.target[fonts.simsun] = "docs/zips/cache/fonts/SimSun.ttc"
+
+pdf.copy[fonts.simhei] = "%SystemRoot%/fonts/simhei.ttf"
+pdf.target[fonts.simhei] = "docs/zips/cache/fonts/SimHei.ttf"
+
+pdf.copy[fonts.arial] = "%SystemRoot%/fonts/arial.ttf"
+pdf.target[fonts.arial] = "docs/zips/cache/fonts/Arial.ttf"
+
+pdf.copy[fonts.arialbd] = "%SystemRoot%/fonts/arialbd.ttf"
+pdf.target[fonts.arialbd] = "docs/zips/cache/fonts/Arialbd.ttf"
+
+pdf.copy[fonts.simfang] = "%SystemRoot%/fonts/simfang.ttf"
+pdf.target[fonts.simfang] = "docs/zips/cache/fonts/SimFang.ttf"
+
+pdf.copy[fonts.simkai] = "%SystemRoot%/fonts/simkai.ttf"
+pdf.target[fonts.simkai] = "docs/zips/cache/fonts/SimKai.ttf"
+
+
+# html
+
+html.in = "docs/books/json-schema-php/userguide.xml"
+html.xsl = "docs/books/json-schema-php/xsl/html/html.xsl"
+html.outdir = "docs/target/json-schema-php/html"
+html.zip = "docs/target/json-schema-php/html/json-schema-php.zip"
+html.header = "docs/books/json-schema-php/xsl/html/header.html"
+# 文件拷贝
+html.copy[image] = "docs/books/json-schema-php/images"
+html.target[image] = "docs/target/json-schema-php/html/images"
+html.copy[css] = "docs/books/json-schema-php/css/html"
+html.target[css] = "docs/target/json-schema-php/html/css"
+
+
+# chm
+
+chm.in = "docs/books/json-schema-php/userguide.xml"
+chm.xsl = "docs/books/json-schema-php/xsl/chm/chm.xsl"
+chm.outdir = "docs/target/json-schema-php/chm"
+# 在 meta generator 后生成其他内容 如 script 此处填写文件名
+chm.header = "docs/books/json-schema-php/xsl/chm/header.html"
+# hhc.exe 的路径
+chm.hhc =  "C:/Program Files (x86)/HTML Help Workshop/hhc.exe"
+# 文件拷贝
+chm.copy[image] = "docs/books/json-schema-php/images"
+chm.target[image] = "docs/target/json-schema-php/chm/images"
+chm.copy[css] = "docs/books/json-schema-php/css/html"
+chm.target[css] = "docs/target/json-schema-php/chm/css"
+
+
+# site
+
+site.in = "docs/books/json-schema-php/userguide.xml"
+site.xsl = "docs/books/json-schema-php/xsl/site/site.xsl"
+site.outdir = "docs/target/json-schema-php/site"
+site.zip = "docs/target/json-schema-php/site/userguide.zip"
+site.header = "docs/books/json-schema-php/xsl/site/header.html"
+# 文件拷贝
+site.copy[image] = "docs/books/json-schema-php/images"
+site.target[image] = "docs/target/json-schema-php/site/images"
+site.copy[css] = "docs/books/json-schema-php/css/html"
+site.target[css] = "docs/target/json-schema-php/site/css"
+
+
+# wiki
+
+wiki.in = "docs/books/json-schema-php/userguide.xml"
+wiki.xsl = "docs/books/json-schema-php/xsl/wiki/wiki.xsl"
+wiki.file = "docs/target/json-schema-php/wiki/userguide.wiki"
+wiki.outdir = "docs/target/json-schema-php/wiki"
+wiki.zip = "docs/target/json-schema-php/wiki/json-schema-php.zip"
+wiki.header = "docs/books/json-schema-php/xsl/wiki/header.wiki"
+# 文件拷贝
+wiki.copy[image] = "docs/books/json-schema-php/images"
+wiki.target[image] = "docs/target/json-schema-php/wiki/images"

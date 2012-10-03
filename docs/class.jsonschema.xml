@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="class.jsonschema"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>class JsonSchema</title>
+
+  <section>
+    <title>类摘要</title>
+
+    <example>
+      <title>导航</title>
+
+      <classsynopsis language="java">
+        <ooclass>
+          <classname>JsonSchema</classname>
+        </ooclass>
+
+        <constructorsynopsis>
+          <methodname><link
+          linkend="jsonschema.construct">__construct</link></methodname>
+
+          <void/>
+        </constructorsynopsis>
+
+        <methodsynopsis>
+          <type>array</type>
+
+          <methodname><link
+          linkend="jsonschema.getSchema">getSchema</link></methodname>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$value</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <void/>
+
+          <methodname><link
+          linkend="jsonschema.addType">addType</link></methodname>
+
+          <methodparam>
+            <type>array</type>
+
+            <parameter>$typeSchema</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>boolean</type>
+
+          <methodname><link
+          linkend="jsonschema.validate">validate</link></methodname>
+
+          <methodparam>
+            <type>array</type>
+
+            <parameter>$schema</parameter>
+          </methodparam>
+
+          <methodparam>
+            <type>mixed</type>
+
+            <parameter>$value</parameter>
+          </methodparam>
+        </methodsynopsis>
+
+        <methodsynopsis>
+          <type>array</type>
+
+          <methodname><link
+          linkend="jsonschema.getErrors">getErrors</link></methodname>
+
+          <void/>
+        </methodsynopsis>
+      </classsynopsis>
+    </example>
+
+    <variablelist>
+      <varlistentry>
+        <term><link
+        linkend="jsonschema.construct">JsonSchema::__construct</link></term>
+
+        <listitem>
+          <para>JsonSchema对象初始化。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="jsonschema.addType">JsonSchema::addType</link></term>
+
+        <listitem>
+          <para>载入复合类型。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="jsonschema.getErrors">JsonSchema::getErrors</link></term>
+
+        <listitem>
+          <para>验证失败时获取错误信息。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="jsonschema.getSchema">JsonSchema::getSchema</link></term>
+
+        <listitem>
+          <para>生成JSON Schema，生成结果切勿直接使用。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><link
+        linkend="jsonschema.validate">JsonSchema::validate</link></term>
+
+        <listitem>
+          <para>使用JsonSchema对JSON进行验证。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="jsonschema.construct">
+    <title>__construct</title>
+
+    <para>JsonSchema对象初始化。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <constructorsynopsis>
+        <methodname><link
+        linkend="jsonschema.construct">__construct</link></methodname>
+
+        <void/>
+      </constructorsynopsis>
+
+      <para>创建JsonSchema对象，载入需要进行操作的JSON数据。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>简单验证</title>
+
+        <programlisting>
+/* 需要进行验证的数据 */
+$value = 'teststring';
+
+/* json schema */
+$schema = array(
+    'type' =&gt; 'string',
+    'format' =&gt; 'regex',
+    'pattern' =&gt; '/^[a-z]+$/i',
+    'minLength' =&gt; 0,
+    'maxLength' =&gt; 2147483647,
+);
+
+/* 验证 */
+$jsonSchema = new JsonSchema();
+echo assert($jsonSchema-&gt;validate($schema, $value));
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="jsonschema.getSchema">
+    <title>getSchema</title>
+
+    <para>生成JSON Schema。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>array</type>
+
+        <methodname><link
+        linkend="jsonschema.getSchema">getSchema</link></methodname>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$value</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>生成JSON
+      Schema。生成结果切勿直接使用。请依照具体需求进行修改后使用。如去掉重复或冲突的描述，提取复合类型等。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>value</term>
+
+          <listitem>
+            <para>数据示例。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>返回一个与JSON结构基本相符的JSON Schema字符串。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>生成一个简单的JSON Schema</title>
+
+        <programlisting>
+$value = 123.321;
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema($value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'number',
+    'default' =&gt; 0,
+    'minimum' =&gt; 0,
+    'maximum' =&gt; 2147483647,
+    'exclusiveMinimum' =&gt; 0,
+    'exclusiveMaximum' =&gt; 2147483647
+);
+
+</programlisting>
+      </example>
+
+      <note>
+        <para>上例很显然的可以看出， minimum 和 exclusiveMinimum
+        具有一定的重复性，在实际使用过程中应依据具体情况予以删减。</para>
+      </note>
+    </simplesect>
+  </section>
+
+  <section xml:id="jsonschema.addType">
+    <title>addType</title>
+
+    <para>载入复合类型。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <void/>
+
+        <methodname><link
+        linkend="jsonschema.addType">JsonSchema::addType</link></methodname>
+
+        <methodparam>
+          <type>string</type>
+
+          <parameter>$typeSchema</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>载入复合类型，以id进行识别，使用$ref属性引用。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>typeSchema</term>
+
+          <listitem>
+            <para>复合类型描述Schema。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>使用一个复合类型对JSON数据进行验证</title>
+
+        <programlisting>
+$value = array();
+$value['users'][] = array('account' =&gt; 'userA', 'email' =&gt; 'userA@example.com');
+$value['users'][] = array('account' =&gt; 'userB', 'email' =&gt; 'userB@example.com');
+$value['users'][] = array('account' =&gt; 'userC', 'email' =&gt; 'userC@example.com');
+
+$user_schema = array(
+    'id' =&gt; 'user',
+    'description' =&gt; 'user info',
+    'type' =&gt; 'object',
+    'optional' =&gt; true,
+    'properties' =&gt;
+    array(
+        'account' =&gt;
+        array(
+            'type' =&gt; 'string',
+        ),
+        'email' =&gt;
+        array(
+            'type' =&gt; 'string',
+            'optional' =&gt; true,
+        ),
+    ),
+);
+$schema = array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'users' =&gt;
+        array(
+            'type' =&gt; 'array',
+            'items' =&gt;
+            array(
+                '$ref' =&gt; 'user',
+            )
+        )
+    )
+);
+$jsonSchema = new JsonSchema();
+$jsonSchema-&gt;addType($user_schema);
+echo assert($jsonSchema-&gt;validate($schema, $value)), PHP_EOL;
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="jsonschema.validate">
+    <title>validate</title>
+
+    <para>对JSON进行验证。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>boolean</type>
+
+        <methodname><link
+        linkend="jsonschema.validate">validate</link></methodname>
+
+        <methodparam>
+          <type>array</type>
+
+          <parameter>$schema</parameter>
+        </methodparam>
+
+        <methodparam>
+          <type>mixed</type>
+
+          <parameter>$value</parameter>
+        </methodparam>
+      </methodsynopsis>
+
+      <para>依据 $schema 的描述对JSON进行验证。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>参数</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>schema</term>
+
+          <listitem>
+            <para>JSON Schema</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>value</term>
+
+          <listitem>
+            <para>需要验证的数据。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>验证成功返回 true ，失败则为 false。验证失败时可通过 <link
+      linkend="jsonschema.getErrors">getErrors</link> 方法获取具体描述信息。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>复杂的数组验证</title>
+
+        <programlisting>$value = new stdClass();
+$value-&gt;users = array();
+
+$user = new stdClass();
+$user-&gt;id = 1;
+$user-&gt;account = 'userA';
+$value-&gt;users[] = $user;
+
+$user = new stdClass();
+$user-&gt;id = 3;
+$user-&gt;account = 'userB';
+$value-&gt;users[] = $user;
+
+$user = new stdClass();
+$user-&gt;id = 5;
+$user-&gt;account = 'userC';
+$value-&gt;users[] = $user;
+
+$jsonSchema = new JsonSchema();
+$schema = array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'users' =&gt;
+        array(
+            'type' =&gt; 'array',
+            'items' =&gt;
+            array(
+                'type' =&gt; 'object',
+                'properties' =&gt;
+                array(
+                    'id' =&gt;
+                    array(
+                        'type' =&gt; 'integer',
+                        'default' =&gt; 0,
+                        'minimum' =&gt; 0,
+                        'maximum' =&gt; 2147483647,
+                        'exclusiveMinimum' =&gt; 0,
+                        'exclusiveMaximum' =&gt; 2147483647,
+                    ),
+                    'account' =&gt;
+                    array(
+                        'type' =&gt; 'string',
+                        'minLength' =&gt; 0,
+                        'maxLength' =&gt; 2147483647,
+                    )
+                )
+            )
+        )
+    )
+);
+echo assert($jsonSchema-&gt;validate($schema, $value));
+$value = array();
+$value['users'][] = array('id' =&gt; 1, 'account' =&gt; 'userA');
+$value['users'][] = array('id' =&gt; 3, 'account' =&gt; 'userB');
+$value['users'][] = array('id' =&gt; 5, 'account' =&gt; 'userC');
+echo ',', assert($jsonSchema-&gt;validate($schema, $value));
+
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+
+  <section xml:id="jsonschema.getErrors">
+    <title>getErrors</title>
+
+    <para>获取错误信息。</para>
+
+    <simplesect>
+      <title>描述</title>
+
+      <methodsynopsis>
+        <type>array</type>
+
+        <methodname><link
+        linkend="jsonschema.getErrors">JsonSchema::getErrors</link></methodname>
+
+        <void/>
+      </methodsynopsis>
+
+      <para>验证失败时获取错误描述列表。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>返回值</title>
+
+      <para>当无错误时返回一个空数组，有错误时返回一个包含各错误描述的数组。</para>
+    </simplesect>
+
+    <simplesect>
+      <title>范例</title>
+
+      <example>
+        <title>验证失败时打印错误信息</title>
+
+        <programlisting>
+$value = 'test s p a c e s string';
+$schema = array(
+    'type' =&gt; 'string',
+    'format' =&gt; 'regex',
+    'pattern' =&gt; '/^[a-z.]+$/i',
+    'minLength' =&gt; 0,
+    'maxLength' =&gt; 2147483647,
+);
+$jsonSchema = new JsonSchema();
+echo assert(!$jsonSchema-&gt;validate($schema, $value));
+var_export($jsonSchema-&gt;getErrors());
+</programlisting>
+      </example>
+    </simplesect>
+  </section>
+</chapter>

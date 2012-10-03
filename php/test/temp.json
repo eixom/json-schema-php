@@ -1,0 +1,5 @@
+{
+    "type":["boolean","integer","null"],
+    "minimum":110,
+    "maximum":230,
+}

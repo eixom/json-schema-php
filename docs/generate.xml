@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="jsonschema.generate" xml:lang="zh_CN"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Schema 生成</title>
+
+  <section>
+    <title>各类型生成</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>string</term>
+
+        <listitem>
+          <example>
+            <title>生成代码与结果</title>
+
+            <programlisting>$value = 'test string';
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema($value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'string',
+    'format' =&gt; 'regex',
+    'pattern' =&gt; '/^[a-z0-9]+$/i',
+    'minLength' =&gt; 0,
+    'maxLength' =&gt; 2147483647
+)
+
+</programlisting>
+          </example>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>number</term>
+
+        <listitem>
+          <example>
+            <title>生成代码与结果</title>
+
+            <programlisting>$value = 123.321;
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema($value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'number',
+    'default' =&gt; 0,
+    'minimum' =&gt; 0,
+    'maximum' =&gt; 2147483647,
+    'exclusiveMinimum' =&gt; 0,
+    'exclusiveMaximum' =&gt; 2147483647,
+)
+
+</programlisting>
+          </example>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>integer</term>
+
+        <listitem>
+          <example>
+            <title>生成代码与结果</title>
+
+            <programlisting>$value = 123;
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema($value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'integer',
+    'default' =&gt; 0,
+    'minimum' =&gt; 0,
+    'maximum' =&gt; 2147483647,
+    'exclusiveMinimum' =&gt; 0,
+    'exclusiveMaximum' =&gt; 2147483647
+)
+
+</programlisting>
+          </example>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>boolean</term>
+
+        <listitem>
+          <example>
+            <title>生成代码与结果</title>
+
+            <programlisting>$value = true;
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema($value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'boolean'
+    , 'default' =&gt; false
+)
+
+</programlisting>
+          </example>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>object</term>
+
+        <listitem>
+          <example>
+            <title>生成代码与结果</title>
+
+            <programlisting>$value = new stdClass();
+$value-&gt;name = 'a name';
+$value-&gt;age = 23;
+$value-&gt;height = 183.5;
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema($value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'name' =&gt;
+        array(
+            'type' =&gt; 'string',
+            'format' =&gt; 'regex',
+            'pattern' =&gt; '/^[a-z0-9]+$/i',
+            'minLength' =&gt; 0,
+            'maxLength' =&gt; 2147483647,
+        ),
+        'age' =&gt;
+        array(
+            'type' =&gt; 'integer',
+            'default' =&gt; 0,
+            'minimum' =&gt; 0,
+            'maximum' =&gt; 2147483647,
+            'exclusiveMinimum' =&gt; 0,
+            'exclusiveMaximum' =&gt; 2147483647,
+        ),
+        'height' =&gt;
+        array(
+            'type' =&gt; 'number',
+            'default' =&gt; 0,
+            'minimum' =&gt; 0,
+            'maximum' =&gt; 2147483647,
+            'exclusiveMinimum' =&gt; 0,
+            'exclusiveMaximum' =&gt; 2147483647,
+        )
+    )
+)
+
+</programlisting>
+          </example>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>array（map）</term>
+
+        <listitem>
+          <example>
+            <title>生成代码与结果</title>
+
+            <programlisting>$value = array();
+$value['name'] = 'a name';
+$value['age'] = 23;
+$value['height'] = 183.5;
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema((object)$value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'name' =&gt;
+        array(
+            'type' =&gt; 'string',
+            'format' =&gt; 'regex',
+            'pattern' =&gt; '/^[a-z0-9 ]+$/i',
+            'minLength' =&gt; 0,
+            'maxLength' =&gt; 2147483647
+        ),array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'name' =&gt;
+        array(
+            'type' =&gt; 'string',
+            'format' =&gt; 'regex',
+            'pattern' =&gt; '/^[a-z0-9]+$/i',
+            'minLength' =&gt; 0,
+            'maxLength' =&gt; 2147483647
+        ),
+        'age' =&gt;
+        array(
+            'type' =&gt; 'integer',
+            'default' =&gt; 0,
+            'minimum' =&gt; 0,
+            'maximum' =&gt; 2147483647,
+            'exclusiveMinimum' =&gt; 0,
+            'exclusiveMaximum' =&gt; 2147483647
+        ),
+        'height' =&gt;
+        array(
+            'type' =&gt; 'number',
+            'default' =&gt; 0,
+            'minimum' =&gt; 0,
+            'maximum' =&gt; 2147483647,
+            'exclusiveMinimum' =&gt; 0,
+            'exclusiveMaximum' =&gt; 2147483647
+        )
+    )
+)
+</programlisting>
+          </example>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>array（list）</term>
+
+        <listitem>
+          <example>
+            <title>生成代码与结果</title>
+
+            <programlisting>$value = array();
+$value[] = 'a name';
+$value[] = 23;
+$value[] = 183.5;
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema($value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'array',
+    'minItems' =&gt; 0,
+    'maxItems' =&gt; 20,
+    'items' =&gt;
+    array(
+        'type' =&gt; 'string',
+        'format' =&gt; 'regex',
+        'pattern' =&gt; '/^[a-z0-9]+$/i',
+        'minLength' =&gt; 0,
+        'maxLength' =&gt; 2147483647,
+    )
+)
+</programlisting>
+          </example>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>array list&lt;object&gt;</term>
+
+        <listitem>
+          <example>
+            <title>生成代码与结果</title>
+
+            <programlisting>$value = new stdClass();
+$value-&gt;users = array();
+
+$user = new stdClass();
+$user-&gt;id = 1;
+$user-&gt;account = 'userA';
+$value-&gt;users[] = $user;
+
+$user = new stdClass();
+$user-&gt;id = 3;
+$user-&gt;account = 'userB';
+$value-&gt;users[] = $user;
+
+$user = new stdClass();
+$user-&gt;id = 5;
+$user-&gt;account = 'userC';
+$value-&gt;users[] = $user;
+
+$jsonSchema = new JsonSchema();
+var_export($jsonSchema-&gt;getSchema($value));
+
+----RESULT---
+
+array(
+    'type' =&gt; 'object',
+    'properties' =&gt;
+    array(
+        'users' =&gt;
+        array(
+            'type' =&gt; 'array',
+            'minItems' =&gt; 0,
+            'maxItems' =&gt; 20,
+            'items' =&gt;
+            array(
+                'type' =&gt; 'object',
+                'properties' =&gt;
+                array(
+                    'id' =&gt;
+                    array(
+                        'type' =&gt; 'integer',
+                        'default' =&gt; 0,
+                        'minimum' =&gt; 0,
+                        'maximum' =&gt; 2147483647,
+                        'exclusiveMinimum' =&gt; 0,
+                        'exclusiveMaximum' =&gt; 2147483647,
+                    ),
+                    'account' =&gt;
+                    array(
+                        'type' =&gt; 'string',
+                        'format' =&gt; 'regex',
+                        'pattern' =&gt; '/^[a-z0-9]+$/i',
+                        'minLength' =&gt; 0,
+                        'maxLength' =&gt; 2147483647,
+                    )
+                )
+            )
+        )
+    )
+)
+
+</programlisting>
+          </example>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+</chapter>

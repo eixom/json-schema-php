@@ -1,0 +1,26 @@
+# http://about.travis-ci.org/docs/user/build-configuration/
+language: php
+
+php:
+    - 5.2
+    - 5.3
+    - 5.4
+
+notifications:
+    email:
+        - system128@gmail.com
+
+env:
+    - REPORT_EXIT_STATUS=1 NO_INTERACTION=1
+
+# compile
+before_script:
+    - cd src
+    - phpize
+    - ./configure
+    - make
+
+# test
+script:
+    - make test
+
