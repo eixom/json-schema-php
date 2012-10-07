@@ -715,18 +715,6 @@ PHP_JSONSCHEMA_API void php_jsonschema_add_type(HashTable * complex_schemas_tabl
 }
 /* }}} */
 
-/*{{{ schema_ctor */
-static void schema_ctor(zval ** dest) {
-	zval * value = *dest;
-
-	ALLOC_ZVAL(*dest);
-	**dest = *value;
-	zval_copy_ctor(*dest);
-	INIT_PZVAL(*dest);
-}
-/*}}}*/
-
-
 /** {{{ PHP_JSONSCHEMA_API zend_bool php_jsonschema_check_by_type(HashTable * complex_schemas_table, HashTable * schema, HashTable * errors_table, zval * value TSRMLS_DC)
  */
 PHP_JSONSCHEMA_API zend_bool php_jsonschema_check_by_type(HashTable * complex_schemas_table, HashTable * schema_table, HashTable * errors_table, zval * value TSRMLS_DC) {
@@ -764,7 +752,7 @@ PHP_JSONSCHEMA_API zend_bool php_jsonschema_check_by_type(HashTable * complex_sc
 				temp_schema_table = NULL;
 				ALLOC_HASHTABLE(temp_schema_table);
 				zend_hash_init(temp_schema_table, zend_hash_num_elements(schema_table), NULL, ZVAL_PTR_DTOR, 1);
-				zend_hash_copy(temp_schema_table, schema_table, (copy_ctor_func_t) schema_ctor, NULL, sizeof (zval *));
+				zend_hash_copy(temp_schema_table, schema_table, (copy_ctor_func_t) zval_add_ref, NULL, sizeof (zval *));
 				zend_hash_update(temp_schema_table, "type", sizeof ("type"), (void *) item, sizeof (zval *), NULL);
 
 				is_pass = php_jsonschema_check_by_type(complex_schemas_table, temp_schema_table, errors_table, value TSRMLS_CC);
@@ -821,7 +809,7 @@ PHP_JSONSCHEMA_API zend_bool php_jsonschema_check_by_type(HashTable * complex_sc
 			temp_schema_table = NULL;
 			ALLOC_HASHTABLE(temp_schema_table);
 			zend_hash_init(temp_schema_table, zend_hash_num_elements(Z_ARRVAL_PP(complex_type)), NULL, ZVAL_PTR_DTOR, 1);
-			zend_hash_copy(temp_schema_table, Z_ARRVAL_PP(complex_type), (copy_ctor_func_t) schema_ctor, NULL, sizeof (zval *));
+			zend_hash_copy(temp_schema_table, Z_ARRVAL_PP(complex_type), (copy_ctor_func_t) zval_add_ref, NULL, sizeof (zval *));
 
 			is_pass = php_jsonschema_check_by_type(complex_schemas_table, temp_schema_table, errors_table, value TSRMLS_CC);
 
