@@ -1,7 +1,7 @@
 Json Schema PHP
 ===============
 
-[![Build Status](https://secure.travis-ci.org/zoeey/json-schema-php.png)](http://travis-ci.org/zoeey/json-schema-php)
+[![Build Status](https://secure.travis-ci.org/eixom/json-schema-php.png)](http://travis-ci.org/zoeey/json-schema-php)
 
 PHP与PHP扩展实现的JSON结构验证工具。
 
