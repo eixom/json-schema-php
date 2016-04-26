@@ -14,20 +14,20 @@ JSON Schema 用于描述JSON数据的结构和类型，如同DTD与XML的关系�
 
 ## 下载（2012-10-03 更新）
 压缩包：
-[json-schema-php_latest.zip](https://github.com/downloads/zoeey/json-schema-php/json-schema-php_latest.zip)
+[json-schema-php_latest.zip](https://github.com/downloads/eixom/json-schema-php/json-schema-php_latest.zip)
 
 版本库：
 ```
-git clone git://github.com/zoeey/json-schema-php.git
+git clone git://github.com/eixom/json-schema-php.git
 ```
 
 dll：
 
 
-* [php_jsonschema-2.0-x86-5.2-zts.dll](https://github.com/zoeey/json-schema-php/raw/master/dll/php_jsonschema-2.0-x86-5.2-zts.dll)
-* [php_jsonschema-2.0-x86-5.2-nts.dll](https://github.com/zoeey/json-schema-php/raw/master/dll/php_jsonschema-2.0-x86-5.2-nts.dll)
-* [php_jsonschema-2.0-x86-5.3-zts.dll](https://github.com/zoeey/json-schema-php/raw/master/dll/php_jsonschema-2.0-x86-5.3-zts.dll)
-* [php_jsonschema-2.0-x86-5.3-nts.dll](https://github.com/zoeey/json-schema-php/raw/master/dll/php_jsonschema-2.0-x86-5.3-nts.dll)
+* [php_jsonschema-2.0-x86-5.2-zts.dll](https://github.com/eixom/json-schema-php/raw/master/dll/php_jsonschema-2.0-x86-5.2-zts.dll)
+* [php_jsonschema-2.0-x86-5.2-nts.dll](https://github.com/eixom/json-schema-php/raw/master/dll/php_jsonschema-2.0-x86-5.2-nts.dll)
+* [php_jsonschema-2.0-x86-5.3-zts.dll](https://github.com/eixom/json-schema-php/raw/master/dll/php_jsonschema-2.0-x86-5.3-zts.dll)
+* [php_jsonschema-2.0-x86-5.3-nts.dll](https://github.com/eixom/json-schema-php/raw/master/dll/php_jsonschema-2.0-x86-5.3-nts.dll)
 
 ## 手册下载（2012-10-03 更新）
 <table>
@@ -40,20 +40,20 @@ dll：
     <tr>
         <td>chm</td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php.chm" rel="nofollow">chm</a>
+            <a href="https://github.com/eixom/json-schema-php/raw/master/docs/build/json-schema-php.chm" rel="nofollow">chm</a>
         </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php.chm.checksum" rel="nofollow">checksum</a>
+            <a href="https://github.com/eixom/json-schema-php/raw/master/docs/build/json-schema-php.chm.checksum" rel="nofollow">checksum</a>
         </td>
         <td>无法查看：文件属性，解除锁定 </td>
     </tr>
     <tr>
         <td> html </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php-html.zip" rel="nofollow">zip</a>
+            <a href="https://github.com/eixom/json-schema-php/raw/master/docs/build/json-schema-php-html.zip" rel="nofollow">zip</a>
         </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php-html.zip.checksum" rel="nofollow">checksum</a>
+            <a href="https://github.com/eixom/json-schema-php/raw/master/docs/build/json-schema-php-html.zip.checksum" rel="nofollow">checksum</a>
         </td>
         <td>
         </td>
@@ -61,10 +61,10 @@ dll：
     <tr>
         <td> single  </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php-single.zip" rel="nofollow"> zip</a>
+            <a href="https://github.com/eixom/json-schema-php/raw/master/docs/build/json-schema-php-single.zip" rel="nofollow"> zip</a>
         </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php-single.zip.checksum" rel="nofollow">checksum</a>
+            <a href="https://github.com/eixom/json-schema-php/raw/master/docs/build/json-schema-php-single.zip.checksum" rel="nofollow">checksum</a>
         </td>
         <td>
         </td>
@@ -72,10 +72,10 @@ dll：
     <tr>
         <td>pdf  </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php.pdf" rel="nofollow"> pdf</a>
+            <a href="https://github.com/eixom/json-schema-php/raw/master/docs/build/json-schema-php.pdf" rel="nofollow"> pdf</a>
         </td>
         <td>
-            <a href="https://github.com/zoeey/json-schema-php/raw/master/docs/build/json-schema-php.pdf.checksum" rel="nofollow">checksum</a>
+            <a href="https://github.com/eixom/json-schema-php/raw/master/docs/build/json-schema-php.pdf.checksum" rel="nofollow">checksum</a>
         </td>
         <td>
         </td>
